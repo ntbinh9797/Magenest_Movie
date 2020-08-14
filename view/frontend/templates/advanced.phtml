@@ -1,0 +1,25 @@
+<h2> Advanced List</h2>
+<?php
+/** @var  $block Magenest\Movie\Block\Advanced */
+$rs = $block->getAllAdvanced(); ?>
+<table border="1">
+    <thead>
+    <tr>
+
+        <th><?php echo __('Movie Name') ?></th>
+        <th><?php echo __('Director Name') ?></th>
+        <th><?php echo __('Actor Name') ?></th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($rs->getData() as $key): ?>
+        <tr>
+            <td><?php echo $key['name'] ?></td>
+            <td><?php echo $key['directorname'] ?></td>
+            <td><?php echo $key['actorid'] ?></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+
