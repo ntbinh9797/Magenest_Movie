@@ -60,6 +60,7 @@
                     <item name="dataScope" xsi:type="string">name</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="max_text_length" xsi:type="number">255</item>
                     </item>
                 </item>
             </argument>

@@ -55,7 +55,7 @@ abstract class Director extends Action
     protected $_collectionFactory;
 
     /**
-     * Template constructor.
+     * Director constructor.
      * @param DirectorFactory $directorFactory
      * @param Registry $coreRegistry
      * @param Context $context
@@ -80,9 +80,7 @@ abstract class Director extends Action
     }
 
     /**
-     * instantiate result page object
-     *
-     * @return \Magento\Backend\Model\View\Result\Page|\Magento\Framework\View\Result\Page
+     * @return Page|\Magento\Framework\View\Result\Page
      */
     public function getResultPage()
     {

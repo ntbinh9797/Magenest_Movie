@@ -1,4 +1,5 @@
 <?php
+
 namespace Magenest\Movie\Controller\Adminhtml\Movie;
 
 use Exception;
@@ -9,16 +10,13 @@ use Magento\Framework\Controller\Result\RedirectFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Exception\LocalizedException;
 
-/**
- * Class Save
- * @package Magenest\InstagramShop\Controller\Adminhtml\Hotspot
- */
+
 class Save extends Action
 {
-    /** @var Movie  */
-    protected $movie;
+    /** @var Movie */
+    protected $movieResource;
 
-    /** @var RedirectFactory  */
+    /** @var RedirectFactory */
     protected $resultRedirectFactory;
 
     /**
@@ -26,43 +24,47 @@ class Save extends Action
      */
     protected $movieFactory;
 
+
     /**
+     * Save constructor.
      * @param Action\Context $context
      * @param MovieFactory $movieFactory
-     * @param Movie $movie
+     * @param Movie $movieResource
      */
     public function __construct(
         Action\Context $context,
         MovieFactory $movieFactory,
-        Movie $movie
-    ) {
+        Movie $movieResource
+    )
+    {
         parent::__construct($context);
         $this->resultRedirectFactory = $context->getResultRedirectFactory();
-        $this->movie= $movie;
+        $this->movieResource = $movieResource;
         $this->movieFactory = $movieFactory;
     }
 
+
     /**
-     * Save action
-     *
-     * @return ResultInterface
+     * @return \Magento\Framework\App\ResponseInterface|ResultInterface
      */
     public function execute()
     {
         try {
             /** @var Redirect $resultRedirect */
             $resultRedirect = $this->resultRedirectFactory->create();
-            $data           = $this->getRequest()->getPostValue();
+            $data = $this->getRequest()->getPostValue();
             if ($data) {
                 $id = $this->getRequest()->getParam('movie_id');
-                $model = $this->movieFactory->create();
-                $this->movie->load($model, $id);
-                $model->addData($data);
-                $this->movie->save($model);
+                $movie = $this->movieFactory->create();
+                $this->movieResource->load($movie, $id);
+                $movie->addData($data);
+                $this->movieResource->save($movie);
+                // Event save_a_movie
+                $this->_eventManager->dispatch(
+                    'save_a_movie',
+                    ['movie' => $movie, 'request' => $this->getRequest()]
+                );
                 $this->messageManager->addSuccessMessage(__('The Movie has been saved.'));
-                if (isset($id)) {
-                    return $resultRedirect->setPath('*/*/');
-                }
             }
         } catch (LocalizedException $e) {
             $this->messageManager->addErrorMessage($e->getMessage());
@@ -71,5 +73,13 @@ class Save extends Action
         }
 
         return $resultRedirect->setPath('*/*/');
+    }
+
+    /**
+     * @return bool
+     */
+    protected function _isAllowed()
+    {
+        return $this->_authorization->isAllowed('Magenest_Movie::movie_table');
     }
 }

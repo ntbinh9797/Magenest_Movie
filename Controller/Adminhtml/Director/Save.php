@@ -16,7 +16,7 @@ use Magento\Framework\Exception\LocalizedException;
 class Save extends Action
 {
     /** @var Director  */
-    protected $director;
+    protected $directorResource;
 
     /** @var RedirectFactory  */
     protected $resultRedirectFactory;
@@ -27,25 +27,24 @@ class Save extends Action
     protected $directorFactory;
 
     /**
+     * Save constructor.
      * @param Action\Context $context
      * @param DirectorFactory $directorFactory
-     * @param Director $director
+     * @param Director $directorResource
      */
     public function __construct(
         Action\Context $context,
         DirectorFactory $directorFactory,
-        Director $director
+        Director $directorResource
     ) {
         parent::__construct($context);
         $this->resultRedirectFactory = $context->getResultRedirectFactory();
-        $this->director= $director;
+        $this->directorResource= $directorResource;
         $this->directorFactory = $directorFactory;
     }
 
     /**
-     * Save action
-     *
-     * @return ResultInterface
+     * @return \Magento\Framework\App\ResponseInterface|ResultInterface
      */
     public function execute()
     {
@@ -55,14 +54,11 @@ class Save extends Action
             $data           = $this->getRequest()->getPostValue();
             if ($data) {
                 $id = $this->getRequest()->getParam('director_id');
-                $model = $this->directorFactory->create();
-                $this->director->load($model, $id);
-                $model->addData($data);
-                $this->director->save($model);
+                $director = $this->directorFactory->create();
+                $this->directorResource->load($director, $id);
+                $director->addData($data);
+                $this->directorResource->save($director);
                 $this->messageManager->addSuccessMessage(__('The Director has been saved.'));
-                if (isset($id)) {
-                    return $resultRedirect->setPath('*/*/');
-                }
             }
         } catch (LocalizedException $e) {
             $this->messageManager->addErrorMessage($e->getMessage());
@@ -71,5 +67,13 @@ class Save extends Action
         }
 
         return $resultRedirect->setPath('*/*/');
+    }
+
+    /**
+     * @return bool
+     */
+    protected function _isAllowed()
+    {
+        return $this->_authorization->isAllowed('Magenest_Movie::director');
     }
 }

@@ -14,18 +14,40 @@
                    showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Movie page settings</label>
                 <field id="text_field" translate="label" type="text"
-                       sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                       sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Text Field</label>
+                    <validate>required-entry</validate>
                 </field>
                 <field id="yn_field" translate="label" type="select"
-                       sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Yes/No_Field</label>
+                       sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Yes/No_Field_abcd</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <frontend_model>Magenest\Movie\Block\System\Config\Form\Field\ChangeColor</frontend_model>
                 </field>
                 <field id="custom_select_field" translate="label" type="select"
                        sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Custom Select Field</label>
                     <source_model>Magenest\Movie\Model\Config\Source\Relation</source_model>
+                </field>
+                <field id="ractortable" translate="label" type="text"
+                       sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Rows in table “magenest_actor”</label>
+                    <depends>
+                        <field id="custom_select_field">1</field>
+                    </depends>
+                    <frontend_model>Magenest\Movie\Block\System\Config\Form\Field\Disable</frontend_model>
+                    <backend_model>Magenest\Movie\Model\Config\Backend\Actor</backend_model>
+                </field>
+                <field id="rmovietable" translate="label" type="text"
+                       sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Rows in table “magenest_movie”</label>
+                    <frontend_model>Magenest\Movie\Block\System\Config\Form\Field\Disable</frontend_model>
+                    <backend_model>Magenest\Movie\Model\Config\Backend\Movie</backend_model>
+                </field>
+                <field id="button_field" translate="label" type="button"
+                       sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Field</label>
+                    <frontend_model>Magenest\Movie\Block\System\Config\Form\Field\Button</frontend_model>
                 </field>
             </group>
         </section>

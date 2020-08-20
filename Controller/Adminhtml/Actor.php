@@ -55,7 +55,7 @@ abstract class Actor extends Action
     protected $_collectionFactory;
 
     /**
-     * Template constructor.
+     * Actor constructor.
      * @param ActorFactory $actorFactory
      * @param Registry $coreRegistry
      * @param Context $context
@@ -80,9 +80,7 @@ abstract class Actor extends Action
     }
 
     /**
-     * instantiate result page object
-     *
-     * @return \Magento\Backend\Model\View\Result\Page|\Magento\Framework\View\Result\Page
+     * @return Page|\Magento\Framework\View\Result\Page
      */
     public function getResultPage()
     {

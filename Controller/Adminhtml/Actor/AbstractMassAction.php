@@ -76,10 +76,8 @@ abstract class AbstractMassAction extends \Magento\Backend\App\Action
     }
 
     /**
-     * Set status to collection items
-     *
      * @param AbstractCollection $collection
-     * @return ResponseInterface|ResultInterface
+     * @return mixed
      */
     abstract protected function massAction(AbstractCollection $collection);
 }

@@ -21,14 +21,17 @@ class Advanced extends Template implements BlockInterface
     public function getAllAdvanced()
     {
         $collection = $this->collectionFactory->create();
-        $collection->getSelect()->joinInner(
+        $collection->getSelect()->join(
             ['magenest_director' => $collection->getTable('magenest_director')],
             'main_table.director_id = magenest_director.director_id',
             ['directorname' => 'magenest_director.name']);
-        $collection->getSelect()->joinInner(
+        $collection->getSelect()->join(
             ['magenest_movie_actor' => $collection->getTable('magenest_movie_actor')],
-            'main_table.movie_id = magenest_movie_actor.movie_id',
-            ['actorid' => 'magenest_movie_actor.actor_id']);
+            'main_table.movie_id = magenest_movie_actor.movie_id'
+        )->join(['magenest_actor' => $collection->getTable('magenest_actor')],
+            'magenest_actor.actor_id = magenest_movie_actor.actor_id', ["actorname"=> new \Zend_Db_Expr('group_concat(magenest_actor.name SEPARATOR ",")')])
+            ->group('main_table.movie_id');
+
 
         return $collection;
     }

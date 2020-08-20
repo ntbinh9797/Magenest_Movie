@@ -35,9 +35,11 @@
                 <item name="magenest_actor_data_source" xsi:type="string">Magenest\Movie\Model\ResourceModel\Actor\Grid\Collection</item>
                 <!--Director_data_source-->
                 <item name="magenest_director_data_source" xsi:type="string">Magenest\Movie\Model\ResourceModel\Director\Grid\Collection</item>
-
             </argument>
         </arguments>
     </type>
-
+    <!--Plugin-->
+    <type name="Magento\Checkout\Controller\Cart\Add">
+        <plugin name="product_around" type="Magenest\Movie\Plugin\Model\Checkout\Cart\ProductAround" sortOrder="1" disabled="false"/>
+    </type>
 </config>

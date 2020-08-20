@@ -9,7 +9,7 @@
                 resource="Magenest_Movie::movie"/>
         <add
                 id="Magenest_Movie::movie_table"
-                title="All Movie"
+                title="All Movies"
                 module="Magenest_Movie"
                 sortOrder="20"
                 action="movie/movie/index"
@@ -18,7 +18,7 @@
         />
         <add
                 id="Magenest_Movie::actor"
-                title="All Actor"
+                title="All Actors"
                 module="Magenest_Movie"
                 sortOrder="30"
                 action="movie/actor/index"
@@ -27,7 +27,7 @@
         />
         <add
                 id="Magenest_Movie::director"
-                title="All Director"
+                title="All Directors"
                 module="Magenest_Movie"
                 sortOrder="40"
                 action="movie/director/index"

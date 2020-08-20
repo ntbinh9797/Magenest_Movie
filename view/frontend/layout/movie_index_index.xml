@@ -8,6 +8,8 @@
                    name="movie_table" template="Magenest_Movie::movie.phtml" />
             <block class="Magenest\Movie\Block\Actor"
                    name="actor_table" template="Magenest_Movie::actor.phtml" />
+            <block class="Magenest\Movie\Block\Advanced"
+                   name="advanced_table" template="Magenest_Movie::advanced.phtml" />
         </referenceContainer>
     </body>
 </page>

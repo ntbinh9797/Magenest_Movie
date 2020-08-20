@@ -1,4 +1,5 @@
 <?php
+
 namespace Magenest\Movie\Controller\Adminhtml;
 
 use Magenest\Movie\Model\MovieFactory;
@@ -55,7 +56,7 @@ abstract class Movie extends Action
     protected $_collectionFactory;
 
     /**
-     * Template constructor.
+     * Movie constructor.
      * @param MovieFactory $movieFactory
      * @param Registry $coreRegistry
      * @param Context $context
@@ -70,7 +71,8 @@ abstract class Movie extends Action
         PageFactory $resultPageFactory,
         CollectionFactory $collectionFactory,
         Filter $filter
-    ) {
+    )
+    {
         $this->movieFactory = $movieFactory;
         $this->_coreRegistry = $coreRegistry;
         $this->_resultPageFactory = $resultPageFactory;
@@ -80,9 +82,7 @@ abstract class Movie extends Action
     }
 
     /**
-     * instantiate result page object
-     *
-     * @return \Magento\Backend\Model\View\Result\Page|\Magento\Framework\View\Result\Page
+     * @return Page|\Magento\Framework\View\Result\Page
      */
     public function getResultPage()
     {

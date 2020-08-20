@@ -60,6 +60,7 @@
                     <item name="dataScope" xsi:type="string">name</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="max_text_length" xsi:type="number">255</item>
                     </item>
                 </item>
             </argument>
@@ -75,6 +76,7 @@
                     <item name="dataScope" xsi:type="string">description</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="max_text_length" xsi:type="number">255</item>
                     </item>
                 </item>
             </argument>
@@ -90,6 +92,7 @@
                     <item name="dataScope" xsi:type="string">rating</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-number" xsi:type="boolean">true</item>
                     </item>
                 </item>
             </argument>
@@ -105,6 +108,7 @@
                     <item name="dataScope" xsi:type="string">director_id</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-number" xsi:type="boolean">true</item>
                     </item>
                 </item>
             </argument>

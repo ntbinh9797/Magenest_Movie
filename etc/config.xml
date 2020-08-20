@@ -6,6 +6,7 @@
             <moviepage>
                 <text_field>I’m a text field</text_field>
                 <yn_field>1</yn_field>
+                <custom_select_field>1</custom_select_field>
             </moviepage>
         </movie>
     </default>

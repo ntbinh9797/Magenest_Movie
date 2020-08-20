@@ -1,4 +1,5 @@
 <?php
+
 namespace Magenest\Movie\Controller\Adminhtml\Director;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
@@ -16,5 +17,13 @@ class MassDelete extends AbstractMassAction
         $resultRedirect = $this->resultRedirectFactory->create();
         $resultRedirect->setPath($this->redirectUrl);
         return $resultRedirect;
+    }
+
+    /**
+     * @return bool
+     */
+    protected function _isAllowed()
+    {
+        return $this->_authorization->isAllowed('Magenest_Movie::director');
     }
 }

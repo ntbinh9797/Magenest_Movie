@@ -11,6 +11,7 @@ class NewAction extends \Magento\Backend\App\Action
     protected $resultPageFactory;
 
     /**
+     * NewAction constructor.
      * @param Context $context
      * @param PageFactory $resultPageFactory
      */
@@ -22,10 +23,21 @@ class NewAction extends \Magento\Backend\App\Action
         $this->resultPageFactory = $resultPageFactory;
     }
 
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
+     */
     public function execute()
     {
         $resultPage = $this->resultPageFactory->create();
         $resultPage->getConfig()->getTitle()->prepend(__('Director Information'));
         return $resultPage;
+    }
+
+    /**
+     * @return bool
+     */
+    protected function _isAllowed()
+    {
+        return $this->_authorization->isAllowed('Magenest_Movie::director');
     }
 }

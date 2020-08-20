@@ -17,4 +17,12 @@ class MassDelete extends AbstractMassAction
         $resultRedirect->setPath($this->redirectUrl);
         return $resultRedirect;
     }
+
+    /**
+     * @return bool
+     */
+    protected function _isAllowed()
+    {
+        return $this->_authorization->isAllowed('Magenest_Movie::actor');
+    }
 }

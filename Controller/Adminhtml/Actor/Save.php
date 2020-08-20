@@ -16,7 +16,7 @@ use Magento\Framework\Exception\LocalizedException;
 class Save extends Action
 {
     /** @var Actor  */
-    protected $actor;
+    protected $actorResource;
 
     /** @var RedirectFactory  */
     protected $resultRedirectFactory;
@@ -29,16 +29,16 @@ class Save extends Action
     /**
      * @param Action\Context $context
      * @param ActorFactory $actorFactory
-     * @param Actor $actor
+     * @param Actor $actorResource
      */
     public function __construct(
         Action\Context $context,
         ActorFactory $actorFactory,
-        Actor $actor
+        Actor $actorResource
     ) {
         parent::__construct($context);
         $this->resultRedirectFactory = $context->getResultRedirectFactory();
-        $this->actor= $actor;
+        $this->actorResource= $actorResource;
         $this->actorFactory = $actorFactory;
     }
 
@@ -55,14 +55,11 @@ class Save extends Action
             $data           = $this->getRequest()->getPostValue();
             if ($data) {
                 $id = $this->getRequest()->getParam('actor_id');
-                $model = $this->actorFactory->create();
-                $this->actor->load($model, $id);
-                $model->addData($data);
-                $this->actor->save($model);
+                $actor = $this->actorFactory->create();
+                $this->actorResource->load($actor, $id);
+                $actor->addData($data);
+                $this->actorResource->save($actor);
                 $this->messageManager->addSuccessMessage(__('The Actor has been saved.'));
-                if (isset($id)) {
-                    return $resultRedirect->setPath('*/*/');
-                }
             }
         } catch (LocalizedException $e) {
             $this->messageManager->addErrorMessage($e->getMessage());
@@ -71,5 +68,13 @@ class Save extends Action
         }
 
         return $resultRedirect->setPath('*/*/');
+    }
+
+    /**
+     * @return bool
+     */
+    protected function _isAllowed()
+    {
+        return $this->_authorization->isAllowed('Magenest_Movie::actor');
     }
 }

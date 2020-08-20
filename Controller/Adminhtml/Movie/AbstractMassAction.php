@@ -1,4 +1,5 @@
 <?php
+
 namespace Magenest\Movie\Controller\Adminhtml\Movie;
 
 use Magento\Backend\Model\View\Result\Redirect;
@@ -25,13 +26,13 @@ abstract class AbstractMassAction extends \Magento\Backend\App\Action
     /** @var Filter */
     protected $filter;
 
-    /** @var CollectionFactory  */
+    /** @var CollectionFactory */
     protected $collectionFactory;
 
     /** @var MovieFactory */
     protected $movieFactory;
 
-    /** @var MovieResource  */
+    /** @var MovieResource */
     protected $movieResource;
 
     /**
@@ -49,7 +50,8 @@ abstract class AbstractMassAction extends \Magento\Backend\App\Action
         MovieFactory $movieFactory,
         Filter $filter,
         Context $context
-    ){
+    )
+    {
         $this->collectionFactory = $collectionFactory;
         $this->movieResource = $movieResource;
         $this->movieFactory = $movieFactory;
@@ -58,9 +60,7 @@ abstract class AbstractMassAction extends \Magento\Backend\App\Action
     }
 
     /**
-     * Execute action
-     *
-     * @return Redirect
+     * @return Redirect|ResponseInterface|ResultInterface
      */
     public function execute()
     {
@@ -76,10 +76,8 @@ abstract class AbstractMassAction extends \Magento\Backend\App\Action
     }
 
     /**
-     * Set status to collection items
-     *
      * @param AbstractCollection $collection
-     * @return ResponseInterface|ResultInterface
+     * @return mixed
      */
     abstract protected function massAction(AbstractCollection $collection);
 }
