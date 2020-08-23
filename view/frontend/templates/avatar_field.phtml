@@ -1,0 +1,13 @@
+<div class="field avatar_customer required">
+    <label class="label" for="avatar_customer">
+
+        <span><?php
+            /**
+             * @var $block
+             */
+            $block->escapeHtml(__('Logo Image Avatar')) ?></span>
+    </label>
+    <div class="control">
+        <input type="file" name="avatar_customer" id="avatar_customer" value="" title="<?= $block->escapeHtmlAttr(__('Logo Image Avatar')) ?>" class="input-text" data-validate="{required:true}">
+    </div>
+</div>

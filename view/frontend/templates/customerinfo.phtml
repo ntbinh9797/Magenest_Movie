@@ -1,0 +1,19 @@
+<h2>Customer Information</h2>
+<label>Avatar: </label></br>
+
+<img src="<?php
+/** @var  $block Magenest\Movie\Block\CustomerInfo */
+try {
+    echo $block->getFileUrl();
+} catch (\Magento\Framework\Exception\NoSuchEntityException $e) {
+} ?>" alt="Logo Image" width="200" height="200"/>
+<?php $customer = $block->getCustomer(); ?>
+<div>
+    <label>Name: </label><?php echo $customer['name'] ?></br>
+</div>
+<div>
+    <label>Email: </label><?php echo $customer['email'] ?></br>
+</div>
+<div>
+    <label>Phone: </label><?php echo $customer['phone'] ?> </br>
+</div>

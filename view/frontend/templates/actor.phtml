@@ -1,7 +1,7 @@
 <h2>List Actor</h2>
 <?php
 /** @var  $block Magenest\Movie\Block\Actor */
-$actors = $block ->getAllActors(); ?>
+$actors = $block->getAllActors(); ?>
 <table border="1">
     <thead>
     <tr>
@@ -10,7 +10,7 @@ $actors = $block ->getAllActors(); ?>
     </tr>
     </thead>
     <tbody>
-    <?php foreach ($actors->getData() as $actor):?>
+    <?php foreach ($actors->getData() as $actor): ?>
         <tr>
             <td><?php echo $actor['actor_id'] ?></td>
             <td><?php echo $actor['name'] ?></td>

@@ -1,7 +1,7 @@
 <h2>List Movie</h2>
 <?php
 /** @var  $block Magenest\Movie\Block\Movie */
-$movies = $block ->getAllMovies(); ?>
+$movies = $block->getAllMovies(); ?>
 <table border="1">
     <thead>
     <tr>
@@ -13,7 +13,7 @@ $movies = $block ->getAllMovies(); ?>
     </tr>
     </thead>
     <tbody>
-    <?php foreach ($movies->getData() as $movie):?>
+    <?php foreach ($movies->getData() as $movie): ?>
         <tr>
             <td><?php echo $movie['movie_id'] ?></td>
             <td><?php echo $movie['name'] ?></td>
