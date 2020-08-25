@@ -1,0 +1,18 @@
+.main-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.container {
+    flex: 1;
+    flex-flow: column wrap;
+    justify-content: center;
+    margin: 25px;
+    padding: 25px;
+    min-width: 300px;
+}
+
+.container > * {
+    flex: 1;
+}

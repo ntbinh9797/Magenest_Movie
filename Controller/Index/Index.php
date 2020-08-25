@@ -17,7 +17,7 @@ class Index extends \Magento\Framework\App\Action\Action
     }
     public function execute()
     {
-        $resultPage = $this->resultPageFactory->create();
-        return $resultPage;
+       return $this->resultPageFactory->create();
+
     }
 }

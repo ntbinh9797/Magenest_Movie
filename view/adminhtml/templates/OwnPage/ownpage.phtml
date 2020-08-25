@@ -1,0 +1,42 @@
+<div class="main-container">
+    <div class="container">
+        <h2>Module Information</h2>
+        <!-- 1st container-->
+        <div class="inner-container">
+            <h3>Numbers of module installed in Magneto but belonged to another Vendor (not Magento):
+                </br>
+                <strong> <?php
+                    /** @var $block \Magenest\Movie\Block\Adminhtml\OwnPage\Amount */
+                    echo $block->getFullModuleList() ?></strong>
+            </h3>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Catalog Information</h2>
+        <!-- 2st container-->
+        <div class="more-container">
+            <table border="1" width="100%">
+                <thead>
+                <tr>
+                    <th><?php echo __('Catalog') ?></th>
+                    <th><?php echo __('Customers') ?></th>
+                    <th><?php echo __('Products') ?></th>
+                    <th><?php echo __('Orders') ?></th>
+                    <th><?php echo __(' Invoices') ?></th>
+                    <th><?php echo __('Creditmemos') ?></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><?php echo __('Total') ?></td>
+                    <td><?php echo $block->getAllCustomers() ?></td>
+                    <td><?php echo $block->getAllProducts() ?></td>
+                    <td><?php echo $block->getAllOrders() ?></td>
+                    <td><?php echo $block->getAllInvoices() ?></td>
+                    <td><?php echo $block->getAllCreditMemo() ?></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

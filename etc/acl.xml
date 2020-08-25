@@ -4,6 +4,7 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
+                <!--Config-->
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
@@ -12,14 +13,17 @@
                         </resource>
                     </resource>
                 </resource>
+                <!-- Movie-->
                 <resource id="Magenest_Movie::movie" title="Movie">
-                    <resource id="Magenest_Movie::movie_table" title="All Movies">
-                    </resource>
-                    <resource id="Magenest_Movie::actor" title="All Actors">
-                    </resource>
-                    <resource id="Magenest_Movie::director" title="All Directors">
-                    </resource>
+                    <resource id="Magenest_Movie::movie_table" title="All Movies"></resource>
+
+                    <resource id="Magenest_Movie::actor" title="All Actors"></resource>
+
+                    <resource id="Magenest_Movie::director" title="All Directors"></resource>
+
+                    <resource id="Magenest_Movie::amount" title="Own Page"></resource>
                 </resource>
+
             </resource>
         </resources>
     </acl>

@@ -34,6 +34,15 @@
                 resource="Magenest_Movie::director"
                 parent="Magenest_Movie::movie"
         />
+        <add
+                id="Magenest_Movie::amount"
+                title="Own Page"
+                module="Magenest_Movie"
+                sortOrder="50"
+                action="movie/ownpage/index"
+                resource="Magenest_Movie::amount"
+                parent="Magenest_Movie::movie"
+        />
 
     </menu>
 </config>
